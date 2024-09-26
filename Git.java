@@ -7,13 +7,13 @@ import java.nio.file.Files;
 
 public class Git {
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
-        File testerFile = new File("gangothy");
-        BufferedWriter bW0 = new BufferedWriter(new FileWriter("gangothy", true));
-        bW0.write("what's up my name is roen beiley");
-        bW0.close();
-        // initGitRepo();
-        Blob blob = new Blob(testerFile.getName());
-        System.out.println(blob.getHashedName());
+        // File testerFile = new File("gangothy");
+        // BufferedWriter bW0 = new BufferedWriter(new FileWriter("gangothy", true));
+        // bW0.write("what's up my name is roen beiley");
+        // bW0.close();
+        // // initGitRepo();
+        // Blob blob = new Blob(testerFile.getName());
+        // System.out.println(blob.getHashedName());
         // File fileInObjects = new File("git/objects", blob.getHashedName());
         // BufferedWriter bW = new BufferedWriter(new FileWriter(fileInObjects, true));
         // bW.write(blob.getData());
@@ -23,7 +23,7 @@ public class Git {
         // bW2.close();
 
         // checkInitGitRepo();
-        deleteRecursively(testerFile);
+        // deleteRecursively(testerFile);
     }
     // THE CURRENT FORM THE TESTER IS IN RIGHT NOW IS JUST PRINTING OUT THE HASHED
     // VERSION OF THE CODE I WROTE IN MY TESTERFILE
@@ -81,8 +81,12 @@ public class Git {
     public static void deleteRecursively(File f) throws IOException {
         if (f.isDirectory()) {
             for (File c : f.listFiles()) {
-                c.delete();
+                deleteRecursively(c);
             }
+            f.delete();
+        }
+        else {
+            f.delete();
         }
     }
 }
